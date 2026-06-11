@@ -3,7 +3,7 @@
 
 
 namespace pneumatics {
-    pros::adi::Pneumatics claw('c', false);
+    pros::adi::Pneumatics claw('a', false);
     pros::Controller master (pros::E_CONTROLLER_MASTER);
     void control(){
         while (true){

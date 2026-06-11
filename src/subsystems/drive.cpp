@@ -7,7 +7,7 @@ namespace drive{
     // Left drive motors with appropiate signs for directions
     pros::MotorGroup left_drive ({14, 9, -3});
     // Right drive motors with appropiate signs for directions
-    pros::MotorGroup right_drive ({-19, -20, 4}); 
+    pros::MotorGroup right_drive ({-19, -20, 6}); 
     // Drivetrain components
     lemlib::Drivetrain drivetrain(&left_drive, // left motor group
                                 &right_drive, // right motor group
