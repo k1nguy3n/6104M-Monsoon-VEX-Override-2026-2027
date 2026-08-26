@@ -6,6 +6,7 @@
 #include "lemlib/api.hpp"
 
 namespace drive{
+    extern pros::MotorGroup full_drive;
     extern pros::MotorGroup left_drive; // Left drive motors
     extern pros::MotorGroup right_drive; // Right drive motors
     // imu

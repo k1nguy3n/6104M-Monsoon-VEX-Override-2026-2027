@@ -29,7 +29,7 @@ namespace intake{
                     if (winch.get_position() >= 360000000){winch.move_voltage(0);}
                     else {winch.move_voltage(12000);}
                 }
-                // down slow
+                // Down slow
                 else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
                     if (winch.get_position() <= 0){winch.move_voltage(0);}
                     else {winch.move_voltage(-6000);}
@@ -38,18 +38,19 @@ namespace intake{
                 else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
                     if (winch.get_position() <= 0){winch.move_voltage(0);}
                     else {winch.move_voltage(-12000);}
-                }   
+                }
+                // Intake   
                 else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
                     intake.move_voltage(12000);
                 }
-                else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
+                // Outtake
+                else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
                     intake.move_voltage(-12000);
                 }
                 // Not running intake
                 else {
                     winch.move_voltage(0);
                     intake.move_voltage(0);
-
                 }
                 pros::delay(10);
         }

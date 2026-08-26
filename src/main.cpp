@@ -65,10 +65,10 @@ void autonomous() {
     //localization::lazyPosW(localization::neg_y);
     //intake::intake_hold();
     // set position to x:0, y:0, heading:0
-   // drive::chassis.setPose(0, 0, 90);
+    //drive::chassis.setPose(0, 0, 0);
 	//drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
     // Tuning
-    //drive::chassis.turnToHeading(90, 10000);
+    //drive::chassis.turnToHeading(180, 10000);
 	//drive::chassis.moveToPoint(48, 0, 10000);
     //drive::chassis.moveToPose(0, 48, 180, 10000);
     //drive::chassis.moveToPose(48, 48, 0, 3000, {.lead = 0.5});
