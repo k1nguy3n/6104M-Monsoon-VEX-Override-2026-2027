@@ -14,7 +14,7 @@ namespace odom {
         x_sensor.reset_position();
         imu.reset();
         // Initalize necessary variables (all on x axis)
-        float final_pos;
+        float final_pos; 
         float x_distance;
         float wheel_dist_from_center;
         // Wheel sizing

@@ -20,6 +20,7 @@ namespace pid {
     float voltage = percentage * 120;
     float early_exit;
     
+    
     enum axis axis;
 
     float DistBtwnPts(point p1, point p2) {
