@@ -5,7 +5,7 @@
 // Intake namespace
 namespace intake{
     // Define intake stages by motor ports
-    pros::Motor intake (-8);
+    pros::Motor intake ({-8});
     pros::MotorGroup winch ({-21, 16});
     
     // Set winch position to 0

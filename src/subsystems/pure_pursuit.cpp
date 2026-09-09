@@ -52,17 +52,17 @@ namespace pure_pursuit{
 
         for (int x = 0; x < points.size(); x++){
             if (withinError){
-                    // Distance between points
-                    std::pair<double, double> p1 = points[x];
-                    std::pair<double, double> p2 = points[x+1];
-                    // float p1vector = DistBtwnPtsScalar(origin, p1);
-                    std::pair<double, double> pt2pt = DistBtwnPtsVector(p1, p2);
-                    std::pair<double, double> robot2pt = DistBtwnPtsVector(robotloc, p1);
-                    // 
-                    float DOTrobot2pt_pt2pt = (robot2pt.first*pt2pt.first) + (robot2pt.second*pt2pt.second);
-                    float DOTpt2pt_pt2pt = (pt2pt.first*pt2pt.first) + (pt2pt.second*pt2pt.second);
-                    float DOTrobot2pt_robot2pt = (robot2pt.first*robot2pt.first) + (robot2pt.second*robot2pt.second);
-                    // 
+                // Distance between points
+                std::pair<double, double> p1 = points[x];
+                std::pair<double, double> p2 = points[x+1];
+                // float p1vector = DistBtwnPtsScalar(origin, p1);
+                std::pair<double, double> pt2pt = DistBtwnPtsVector(p1, p2);
+                std::pair<double, double> robot2pt = DistBtwnPtsVector(robotloc, p1);
+                // 
+                float DOTrobot2pt_pt2pt = (robot2pt.first*pt2pt.first) + (robot2pt.second*pt2pt.second);
+                float DOTpt2pt_pt2pt = (pt2pt.first*pt2pt.first) + (pt2pt.second*pt2pt.second);
+                float DOTrobot2pt_robot2pt = (robot2pt.first*robot2pt.first) + (robot2pt.second*robot2pt.second);
+                // 
                 if (std::pow(DOTrobot2pt_pt2pt, 2)-(DOTpt2pt_pt2pt)*(DOTrobot2pt_robot2pt-std::pow(lookahead, 2)) >= 0){
                         float ScalarPos = (-(DOTrobot2pt_pt2pt) + sqrt(DOTrobot2pt_pt2pt*DOTrobot2pt_pt2pt-(DOTpt2pt_pt2pt)*(DOTrobot2pt_robot2pt-lookahead*lookahead)))/(DOTpt2pt_pt2pt);
                         float ScalarNeg = (-(DOTrobot2pt_pt2pt) - sqrt(DOTrobot2pt_pt2pt*DOTrobot2pt_pt2pt-(DOTpt2pt_pt2pt)*(DOTrobot2pt_robot2pt-lookahead*lookahead)))/(DOTpt2pt_pt2pt);
@@ -78,32 +78,30 @@ namespace pure_pursuit{
                         else {ChasingPt = ChasingPtNeg;}
 
                         // Need condition for 1 and 0 points of intersection
+                        float lateral_offset = -(robotloc.first - ChasingPt.first)*cos(angle)+(robotloc.second - ChasingPt.second)*sin(angle);
+                        curvature = (2*lateral_offset)*(lookahead*lookahead);
 
-                        curvature = (2*ChasingPt.second)/std::pow(lookahead, 2);
-                    
                         withinError = false;
                         float u_pid = (rightVoltage+leftVoltage)/2;
                         float K_pp = (trackwidth/2)*curvature*u_pid;
                         rightVoltage = u_pid + K_pp*curvature;
                         leftVoltage = u_pid - K_pp*curvature;
+
+                        
                         // Left drive motors with appropiate signs for directions
                         drive::left_drive.move_voltage(leftVoltage);
                         drive::right_drive.move_voltage(rightVoltage);
-    
                         
                         pros::delay(500);
                       
                 }
                 else {
-                
+                    
                 }       
-        }
-
-        
-
+            }
 
         //float pint = -(f*dist);
+        }
     }
-}
 
 }
