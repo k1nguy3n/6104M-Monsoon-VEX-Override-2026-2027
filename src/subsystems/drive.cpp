@@ -4,7 +4,7 @@
 #include "subsystems/localization.hpp"
 // Drive namepsace for 
 namespace drive{
-    
+
     pros::MotorGroup full_drive ({14, 9, -3, -19, -20, 7}); 
     // Left drive motors with appropiate signs for directions
     pros::MotorGroup left_drive ({14, 9, -3});
@@ -16,11 +16,11 @@ namespace drive{
                                 10.8, // 10.8 inch track width
                                 lemlib::Omniwheel::NEW_325, // New 3.25" omnis in drive
                                 360, // Drive rpm is 360
-                                2); // horizontal drift is 2 (for now)
+                                8); // horizontal drift is 2 (for now)
     // Lateral PID controller constants
-    lemlib::ControllerSettings lateral_controller(0, // proportional gain (kP)
+    lemlib::ControllerSettings lateral_controller(12, // proportional gain (kP)
                                               0, // integral gain (kI)
-                                              0, // derivative gain (kD)
+                                              15, // derivative gain (kD)
                                               3, // anti windup
                                               1, // small error range, in inches
                                               100, // small error range timeout, in milliseconds

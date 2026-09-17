@@ -5,16 +5,24 @@
 #include "autons.hpp"
  
 void basic(){
-    drive::chassis.setPose(-70, 0, 90);
+    // Start Centered
+    drive::chassis.setPose(-63.5, 0, 90);
     // Toggle
-    drive::chassis.moveToPoint(-60, 0, false);
-    drive::chassis.moveToPoint(-70, 0, 1000, {.forwards = false}, false);
-    drive::chassis.moveToPoint(-60, 0, false);
-    drive::chassis.moveToPoint(-70, 0, 1000, {.forwards = false}, false);
+    drive::chassis.moveToPoint(-55, 0, 1000);
+    drive::chassis.moveToPoint(-63.5, 0, 1000, {.forwards = false}, 1000);
+    drive::chassis.moveToPoint(-55, 0, false);
+    drive::chassis.moveToPoint(-63.5, 0, 1000, {.forwards = false}, 1000);
+    drive::chassis.moveToPoint(-48, 0, 1000);
     // Goal
-    drive::chassis.moveToPoint(-48, 0, false); 
-    drive::chassis.turnToHeading(180, false);
-    drive::chassis.moveToPoint(-48, -24, false);    
+    drive::chassis.turnToHeading(90, 1000);
+    // drive::chassis.moveToPoint(-48, 20, 1000); 
+
+
+    // drive::chassis.moveToPoint(-48, 20, 2000); 
+
+    // drive::chassis.moveToPose(-27, 6, 135, false);
+    // drive::chassis.moveToPose(-43, 22, -45, false);  
+   
 }
 
 // void left_standard(){

@@ -2,7 +2,7 @@
 #include "subsystems/intake.hpp"
 #include "subsystems/drive.hpp"
 #include "subsystems/pneumatics.hpp"
-//#include "autons.hpp"
+#include "autons.hpp"
 #include "subsystems/localization.hpp"
 #include "lemlib/api.hpp"
 
@@ -66,14 +66,15 @@ void autonomous() {
     //intake::intake_hold();
     // set position to x:0, y:0, heading:0
     //drive::chassis.setPose(0, 0, 0);
-	//drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
+	drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
     // Tuning
     //drive::chassis.turnToHeading(180, 10000);
-	//drive::chassis.moveToPoint(48, 0, 10000);
+	//drive::chassis.moveToPoint(0, 48, 10000);
     //drive::chassis.moveToPose(0, 48, 180, 10000);
     //drive::chassis.moveToPose(48, 48, 0, 3000, {.lead = 0.5});
     //drive::chassis.moveToPose(0, 48, 270, 10000);
 
+    basic();
     // Standard Autons
     //right_standard();
 
@@ -86,7 +87,19 @@ void autonomous() {
     //super_basic();
     //forward();
 
+    
 
+    // drive::chassis.moveToPose(-42, 0, 90, 2000, {.forwards = false});
+
+    // drive::chassis.moveToPoint(-40, 25, 2000);
+    // drive::chassis.turnToHeading(-45, 1000);
+    //drive::chassis.moveToPose(-41, 0, -90, 2000);
+    
+    
+    //drive::chassis.moveToPose(-58, 24, 0, 2000); 
+    
+    
+    //drive::chassis.moveToPose(-60, 20, -45, 2000);  
 }
 
 
