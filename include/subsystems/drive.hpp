@@ -22,6 +22,7 @@ namespace drive{
     void control(void);
     void init(void);
     void odom_debug(void);
+    void odom_debug2(void);
 
 }
 

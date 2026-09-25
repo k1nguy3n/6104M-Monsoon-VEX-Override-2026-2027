@@ -51,6 +51,14 @@ namespace drive{
             pros::delay(100);
         }
     }
+
+    void odom_debug2() {
+        while (true) {
+            lemlib::Pose pose = drive::chassis.getPose();
+            pros::delay(1000);
+        }
+    }
+
     // Define controller
     pros::Controller controller(pros::E_CONTROLLER_MASTER);
     // Initialize drivetrain with a 3 second delay so it remins undisturbed

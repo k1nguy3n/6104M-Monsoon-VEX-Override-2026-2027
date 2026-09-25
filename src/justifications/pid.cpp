@@ -5,7 +5,7 @@
 #include "subsystems/drive.hpp"
 // PID Namespace for organization
 namespace pid {
-    point current_loc = {x_odom(), y_odom(), imu.get_heading};
+    point current_loc = {odom::x_odom(), odom::y_odom(), odom::imu.get_heading()};
     // make an equation for error and then use a while error != 0?
     // PID constants (using struct)
     PIDconsts lateral;

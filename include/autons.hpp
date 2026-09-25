@@ -7,7 +7,7 @@
 #include "main.h"
 
 
-void basic(void);
+void basic_blue(void);
 
 
 #endif

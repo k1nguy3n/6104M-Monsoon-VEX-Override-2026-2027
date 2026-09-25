@@ -5,7 +5,10 @@
 #include "api.h"
 #include "lemlib/api.hpp"
 
+enum pneumatics_state {extend, retract};
 namespace pneumatics {
+
+    void toggle(enum pneumatics_state);
     extern pros::adi::Pneumatics claw;
     extern pros::adi::Pneumatics toggler1;
     extern pros::adi::Pneumatics toggler2;

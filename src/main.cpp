@@ -59,14 +59,15 @@ void competition_initialize() {}
 
 
 void autonomous() {
+    drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
     //pros::Task odom_debug(drive::odom_debug);
+
     // Test west sensor
     //localization::lazyPosN(localization::neg_x);
     //localization::lazyPosW(localization::neg_y);
     //intake::intake_hold();
     // set position to x:0, y:0, heading:0
     //drive::chassis.setPose(0, 0, 0);
-	drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
     // Tuning
     //drive::chassis.turnToHeading(180, 10000);
 	//drive::chassis.moveToPoint(0, 48, 10000);
@@ -74,7 +75,7 @@ void autonomous() {
     //drive::chassis.moveToPose(48, 48, 0, 3000, {.lead = 0.5});
     //drive::chassis.moveToPose(0, 48, 270, 10000);
 
-    basic();
+    basic_blue();
     // Standard Autons
     //right_standard();
 
@@ -117,10 +118,13 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    //drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
+    drive::chassis.setPose({0,0,0});
+    pros::Task odom_debug(drive::odom_debug, TASK_PRIORITY_DEFAULT + 4);
+    // drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
     pros::Task drive(drive::control, TASK_PRIORITY_DEFAULT + 4);
 	pros::Task intake(intake::control, TASK_PRIORITY_DEFAULT + 3);
 	pros::Task pneumatics(pneumatics::control, TASK_PRIORITY_DEFAULT + 2);
+    
     // Defines controller
     // pros::Controller master (pros::E_CONTROLLER_MASTER);
     // drive::chassis.setPose(-48, 24, 270);

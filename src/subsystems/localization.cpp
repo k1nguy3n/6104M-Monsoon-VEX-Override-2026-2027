@@ -7,8 +7,8 @@
 // Fresh localization namespace for organization
 namespace localization{
     // Odom system sensors (put in new file later?)
-    pros::IMU imu(11);
-    pros::Rotation horiz_sensor(1);
+    pros::IMU imu(15);
+    pros::Rotation horiz_sensor(6);
     lemlib::TrackingWheel horiz_tw(&horiz_sensor, lemlib::Omniwheel::NEW_2, -1);
     // Group odom components
     lemlib::OdomSensors sensors(nullptr, // vertical tracking wheels
@@ -21,8 +21,8 @@ namespace localization{
     {sensor, vertical offset, horizontal offset, angular offset, calibration const 
     (when robot faces forward)}*/
     dsr DSR {distSensor {pros::Distance(111), 0, 0, 0, 18.35/18.858268},
-            distSensor {pros::Distance(6), 3.0, 4.0, 180, 1},
-            distSensor {pros::Distance(15), 0, 4.5, 90, 1},
+            distSensor {pros::Distance(1), 3.0, 4.0, 180, 1},
+            distSensor {pros::Distance(12), 0, 4.5, 90, 1},
             distSensor {pros::Distance(13), 0, 4.5, 270.0, 1}, 
             imu};
     // Idk a good place to put this but paranoia func eventually

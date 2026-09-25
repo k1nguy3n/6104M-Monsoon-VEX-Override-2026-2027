@@ -3,6 +3,18 @@
 
 
 namespace pneumatics {
+
+    void toggle (enum pneumatics_state state){
+        if (state ==  extend){
+            toggler1.extend();
+            toggler2.extend();
+        }
+        if (state == retract){
+            toggler1.retract();
+            toggler2.retract();
+        }
+    }
+
     pros::adi::Pneumatics claw('a', true);
     pros::adi::Pneumatics toggler1('b', false);
     pros::adi::Pneumatics toggler2('c', false);
