@@ -18,7 +18,7 @@ namespace drive{
                                 360, // Drive rpm is 360
                                 8); // horizontal drift is 2 (for now)
     // Lateral PID controller constants
-    lemlib::ControllerSettings lateral_controller(12, // proportional gain (kP)
+    lemlib::ControllerSettings lateral_controller(2, // proportional gain (kP)
                                               0, // integral gain (kI)
                                               15, // derivative gain (kD)
                                               3, // anti windup
@@ -28,14 +28,14 @@ namespace drive{
                                               500, // large error range timeout, in milliseconds
                                               20); // maximum acceleration (slew)
     // Angular PID controller constants
-    lemlib::ControllerSettings angular_controller(19.7, // proportional gain (kP) 19.7
+    lemlib::ControllerSettings angular_controller(5, // proportional gain (kP) 19.7 15.09 4
                                                 0, // integral gain (kI)
-                                                11.5, // derivative gain (kD) 10      
-                                                3, // anti windup
-                                                1, // small error range, in inches
-                                                100, // small error range timeout, in milliseconds
-                                                3, // large error range, in inches
-                                                500, // large error range timeout, in milliseconds
+                                                7.75, // derivative gain (kD) 10  11.5     13 || INCREASE
+                                                0, // anti windup
+                                                0, // small error range, in inches
+                                                0, // small error range timeout, in milliseconds
+                                                0, // large error range, in inches
+                                                000, // large error range timeout, in milliseconds
                                                 0); // maximum acceleration (slew)
                                             // 0,0,0,0,0,0);
     // create the chassis
