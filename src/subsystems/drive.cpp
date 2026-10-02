@@ -28,9 +28,9 @@ namespace drive{
                                               500, // large error range timeout, in milliseconds
                                               20); // maximum acceleration (slew)
     // Angular PID controller constants
-    lemlib::ControllerSettings angular_controller(4, // proportional gain (kP) 19.7 15.09 4.        when you did this you had 5
+    lemlib::ControllerSettings angular_controller(3.25, // proportional gain (kP) 19.7 15.09 4.        when you did this you had 5
                                                 0, // integral gain (kI)
-                                                13, // derivative gain (kD) 10  11.5     13 || INCREASE     when you did this you had 7.75
+                                                18, // derivative gain (kD) 10  11.5     13 || INCREASE     when you did this you had 7.75
                                                 0, // anti windup
                                                 0, // small error range, in inches
                                                 0, // small error range timeout, in milliseconds
