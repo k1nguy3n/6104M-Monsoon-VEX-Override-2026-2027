@@ -69,7 +69,7 @@ void autonomous() {
     // set position to x:0, y:0, heading:0
     drive::chassis.setPose(0, 0, 0);
     // Tuning
-    drive::chassis.turnToHeading(180, 100000);
+    drive::chassis.turnToHeading(180, 1000);
 	//drive::chassis.moveToPoint(0, 48, 10000);
     //drive::chassis.moveToPose(0, 48, 180, 10000);
     //drive::chassis.moveToPose(48, 48, 0, 3000, {.lead = 0.5});
