@@ -13,7 +13,7 @@ namespace drive{
     // Drivetrain components
     lemlib::Drivetrain drivetrain(&left_drive, // left motor group
                                 &right_drive, // right motor group
-                                11.5, // 10.8 inch track width
+                                11.1, // 10.8 inch track width
                                 lemlib::Omniwheel::NEW_325, // New 3.25" omnis in drive
                                 360, // Drive rpm is 360
                                 8); // horizontal drift is 2 (for now)
