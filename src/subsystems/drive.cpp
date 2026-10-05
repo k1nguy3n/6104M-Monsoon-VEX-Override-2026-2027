@@ -13,7 +13,7 @@ namespace drive{
     // Drivetrain components
     lemlib::Drivetrain drivetrain(&left_drive, // left motor group
                                 &right_drive, // right motor group
-                                10.8, // 10.8 inch track width
+                                11.5, // 10.8 inch track width
                                 lemlib::Omniwheel::NEW_325, // New 3.25" omnis in drive
                                 360, // Drive rpm is 360
                                 8); // horizontal drift is 2 (for now)
@@ -28,14 +28,14 @@ namespace drive{
                                               500, // large error range timeout, in milliseconds
                                               20); // maximum acceleration (slew)
     // Angular PID controller constants
-    lemlib::ControllerSettings angular_controller(3.25, // proportional gain (kP) 19.7 15.09 4.        when you did this you had 5
+    lemlib::ControllerSettings angular_controller(5, // proportional gain (kP) 19.7 15.09 4.        when you did this you had 5.   when i did this i got 3.25
                                                 0, // integral gain (kI)
-                                                18, // derivative gain (kD) 10  11.5     13 || INCREASE     when you did this you had 7.75
+                                                7.75, // derivative gain (kD) 10  11.5     13 || INCREASE     when you did this you had 7.75.     when i did this i got 18
                                                 0, // anti windup
-                                                0, // small error range, in inches
-                                                0, // small error range timeout, in milliseconds
-                                                0, // large error range, in inches
-                                                000, // large error range timeout, in milliseconds
+                                                1, // small error range, in inches
+                                                200, // small error range timeout, in milliseconds
+                                                3, // large error range, in inches
+                                                500, // large error range timeout, in milliseconds
                                                 0); // maximum acceleration (slew)
                                             // 0,0,0,0,0,0);
     // create the chassis
@@ -48,7 +48,7 @@ namespace drive{
         while (true) {
             lemlib::Pose pose = drive::chassis.getPose();
             printf("x: %f | y: %f | theta: %f\n", pose.x, pose.y, pose.theta);
-            pros::delay(100);
+            pros::delay(50);
         }
     }
 
@@ -64,7 +64,7 @@ namespace drive{
     // Initialize drivetrain with a 3 second delay so it remins undisturbed
     void init(){
         chassis.calibrate();
-        localization::imu.reset();
+       // localization::imu.reset();
         pros::delay(3000);
     }
     void control() {
