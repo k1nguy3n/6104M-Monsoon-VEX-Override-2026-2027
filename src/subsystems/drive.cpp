@@ -26,17 +26,23 @@ namespace drive{
                                               100, // small error range timeout, in milliseconds
                                               3, // large error range, in inches
                                               500, // large error range timeout, in milliseconds
-                                              20); // maximum acceleration (slew)
+                                              127); // maximum acceleration (slew)
     // Angular PID controller constants
-    lemlib::ControllerSettings angular_controller(3.25, // proportional gain (kP) 19.7 15.09 4.        when you did this you had 5.   when i did this i got 3.25
+
+    // 4.5 0 9.5
+
+    // 8 0 17.5
+    // 8.5, 0, 26
+    // Ceiling = ~10
+    lemlib::ControllerSettings angular_controller(9.55, // proportional gain (kP) 19.7 15.09 4.        when you did this you had 5.   when i did this i got 3.25
                                                 0, // integral gain (kI)
-                                                18, // derivative gain (kD) 10  11.5     13 || INCREASE     when you did this you had 7.75.     when i did this i got 18
+                                                26.5, // derivative gain (kD) 10  11.5     13 || INCREASE     when you did this you had 7.75.     when i did this i got 18
                                                 0, // anti windup
                                                 1, // small error range, in inches
                                                 200, // small error range timeout, in milliseconds
                                                 3, // large error range, in inches
                                                 500, // large error range timeout, in milliseconds
-                                                0); // maximum acceleration (slew)
+                                                127); // maximum acceleration (slew)
                                             // 0,0,0,0,0,0);
     // create the chassis
     lemlib::Chassis chassis(drivetrain, // Drivetrain settings
