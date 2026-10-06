@@ -7,7 +7,7 @@
 // Fresh localization namespace for organization
 namespace localization{
     // Odom system sensors (put in new file later?)
-    pros::IMU imu(15);
+    pros::Imu imu(15);
     pros::Rotation horiz_sensor(6);
     lemlib::TrackingWheel horiz_tw(&horiz_sensor, lemlib::Omniwheel::NEW_2, -1);
     // Group odom components
