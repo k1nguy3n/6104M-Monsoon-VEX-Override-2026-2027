@@ -67,42 +67,18 @@ void autonomous() {
     //localization::lazyPosW(localization::neg_y);
     //intake::intake_hold();
     // set position to x:0, y:0, heading:0
-    drive::chassis.setPose(0, 0, 0);
+    //drive::chassis.setPose(0, 0, 0);
     // Tuning
-    drive::chassis.turnToHeading(180, 10000, {maxSpeed: 127});
+    //drive::chassis.turnToHeading(180, 10000, {maxSpeed: 127});
 	//drive::chassis.moveToPoint(0, 48, 10000);
-    //drive::chassis.moveToPose(0, 48, 180, 10000);
+    //drive::chassis.moveToPose(0, 48, 0, 10000, {maxSpeed: 127});
     //drive::chassis.moveToPose(48, 48, 0, 3000, {.lead = 0.5});
     //drive::chassis.moveToPose(0, 48, 270, 10000);
 
-    // basic_blue();
-    // Standard Autons
-    //right_standard();
+    basic_blue();
+   
 
-    // Disrupt
-    // left_disrupt();
-    //right_disrupt();
-
-   // Skills
-    //bleh_skills();
-    //super_basic();
-    //forward();
-
-
-
-    
-
-    // drive::chassis.moveToPose(-42, 0, 90, 2000, {.forwards = false});
-
-    // drive::chassis.moveToPoint(-40, 25, 2000);
-    // drive::chassis.turnToHeading(-45, 1000);
-    //drive::chassis.moveToPose(-41, 0, -90, 2000);
-    
-    
-    //drive::chassis.moveToPose(-58, 24, 0, 2000); 
-    
-    
-    //drive::chassis.moveToPose(-60, 20, -45, 2000);  
+  
 }
 
 
@@ -120,7 +96,7 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-    drive::chassis.setPose({0,0,0});
+    //drive::chassis.setPose({0,0,0});
     pros::Task odom_debug(drive::odom_debug, TASK_PRIORITY_DEFAULT + 4);
     // drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
     pros::Task drive(drive::control, TASK_PRIORITY_DEFAULT + 4);

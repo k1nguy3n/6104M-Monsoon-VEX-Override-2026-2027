@@ -18,10 +18,10 @@ namespace drive{
                                 360, // Drive rpm is 360
                                 8); // horizontal drift is 2 (for now)
     // Lateral PID controller constants
-    lemlib::ControllerSettings lateral_controller(2, // proportional gain (kP)
+    lemlib::ControllerSettings lateral_controller(13, // proportional gain (kP)
                                               0, // integral gain (kI)
-                                              15, // derivative gain (kD)
-                                              3, // anti windup
+                                              37, // derivative gain (kD)
+                                              0, // anti windup
                                               1, // small error range, in inches
                                               100, // small error range timeout, in milliseconds
                                               3, // large error range, in inches

@@ -41,7 +41,7 @@ void basic_blue(){
     std::cout <<"6 Turn" << std::endl;
    
     
-    drive::chassis.moveToPoint(-48, 16, 1000, {.forwards = true}, false);
+    drive::chassis.moveToPoint(-52, 16, 1000, {.forwards = true}, false);
     std::cout <<"7 Straight" << std::endl;
    
     
@@ -49,7 +49,7 @@ void basic_blue(){
     pneumatics::claw.retract();
     
     // // Cup/Pin
-    drive::chassis.moveToPoint(-48, 0, 1000, {.forwards = false}, true);
+    drive::chassis.moveToPoint(-52, 0, 1000, {.forwards = false}, true);
     std::cout <<"8 Straight" << std::endl;
    
     
@@ -59,7 +59,10 @@ void basic_blue(){
     
     // drive::chassis.moveToPoint(-33.5, 15.5, 1000); 
     //drive::chassis.moveToPoint(-33.25, 15.25, 1000, {.forwards = true}, false); 
-    drive::chassis.moveToPoint(-33, 15, 1000, {.forwards = true}, false); 
+    drive::chassis.moveToPoint(-36, 12, 1000, {.forwards = true, .earlyExitRange=4}, false); 
+
+    drive::chassis.moveToPoint(-33, 15, 1000, {.forwards = true, .maxSpeed=50}, false); 
+
     std::cout <<"10 Staight" << std::endl;
     
     
@@ -68,7 +71,7 @@ void basic_blue(){
     
 
     // Back to goal
-    drive::chassis.moveToPoint(-50, 0, 1000, {.forwards = false}, true);
+    drive::chassis.moveToPoint(-52, 0, 1000, {.forwards = false}, true);
     std::cout <<"11 Straight" << std::endl;
     
     
@@ -76,7 +79,7 @@ void basic_blue(){
     std::cout <<"12 Turn" << std::endl;
     
     
-    drive::chassis.moveToPoint(-50, 16, 1000); 
+    drive::chassis.moveToPoint(-52, 16, 1000); 
     std::cout <<"13 Straight" << std::endl;
     
     
