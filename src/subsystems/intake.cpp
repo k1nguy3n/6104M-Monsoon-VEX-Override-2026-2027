@@ -40,14 +40,15 @@ namespace intake{
                 }
                 // Need to do claw rotation stuff, get pos from motor? LB
                 else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-                    if (wrist.get_position() < 900 || wrist.get_position() < 1100){
-                        if (wrist.get_position() < 900){
+                    
+                        if (wrist.get_position() < 340){
                             wrist.move_voltage(12000);
                         }
-                        else if (wrist.get_position() > 1100){
-                            wrist.move_voltage(-12000);
+                        else if (wrist.get_position() > 340){
+                            wrist.move_voltage(0);
+                            wrist.brake();
                         }
-                    }
+                    
                     else{
                         wrist.move_voltage(0);
                         wrist.brake();
