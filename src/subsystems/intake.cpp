@@ -11,6 +11,7 @@ namespace intake{
 
     void init(){
         cascade.tare_position();
+        claw.tare_position();
     }
     
     void control(){
@@ -32,6 +33,11 @@ namespace intake{
                 else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
                     if (cascade.get_position() >= limit){cascade.move_voltage(0);}
                     else {cascade.move_voltage(12000);}
+                }
+                // Need to do claw rotation stuff, get pos from motor? LB
+                else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+                    if (claw.get_position() >= 330){cascade.move_voltage(0);}
+                    else {claw.move_voltage(12000);}
                 }
 
                 // Not running intake
