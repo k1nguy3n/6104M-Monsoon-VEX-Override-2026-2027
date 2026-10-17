@@ -7,7 +7,7 @@ namespace intake{
     pros::Motor intake (-14);
     pros::Motor claw (5);
     pros::MotorGroup cascade ({-1, 2});
-    pros::Motor wrist (3);
+    pros::Motor wrist (3,pros::MotorGears::green, pros::MotorUnits::degrees);
     
     
     void wrist_debug() {
@@ -23,7 +23,7 @@ namespace intake{
         cascade.tare_position();
        //claw.tare_position();
         wrist.tare_position();
-        wrist.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+        wrist.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
     }
     
     void control(){ 
@@ -50,14 +50,13 @@ namespace intake{
                 // Need to do claw rotation stuff, get pos from motor? LB
                 else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
                     
-                        if (wrist.get_position() < 890){
+                        if (wrist.get_position() < 340){
                             wrist.move_voltage(12000);
                             
                         }
-                        else if (wrist.get_position() > 0){
+                        else if (wrist.get_position() > 340){
                             wrist.move_voltage(0);
                             wrist.brake();
-                            //SUPER BANDAID RN FIX IT 
                         }
                     
                     else{
