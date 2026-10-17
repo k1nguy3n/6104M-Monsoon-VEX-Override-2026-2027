@@ -9,25 +9,23 @@ namespace intake{
     pros::MotorGroup cascade ({-1, 2});
     pros::Motor wrist (3,pros::MotorGears::green, pros::MotorUnits::degrees);
     
-    
+
     void wrist_debug() {
         while (true) {
-              printf("Motor Position: %lf\n", wrist.get_position());
-             // printf("Raw Position: %lf\n", wrist.get_raw_position() );
+            // int mode = wrist.get_brake_mode();
+              //  printf("Current Motor Brake Mode: %d\n", mode);
             pros::delay(150);
         }
     }
 
     void init(){
-        wrist.set_encoder_units(pros::E_MOTOR_ENCODER_DEGREES);
         cascade.tare_position();
-       //claw.tare_position();
         wrist.tare_position();
-        wrist.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
+        wrist.set_brake_mode(pros::MotorBrake::hold);
     }
     
     void control(){ 
-        pros::Task wrist_debug(intake::wrist_debug);
+        init();
         float limit = 1042000;
         while (true) {
                 // Up slow
@@ -55,12 +53,10 @@ namespace intake{
                             
                         }
                         else if (wrist.get_position() > 340){
-                            wrist.move_voltage(0);
                             wrist.brake();
                         }
                     
                     else{
-                        wrist.move_voltage(0);
                         wrist.brake();
                     
                     }
