@@ -77,8 +77,9 @@ namespace intake{
                             wrist.move_absolute(0, 100);
                             
                         }
-                        else if (cascade.get_position() > 200){
-                           wrist.move_absolute(340, 127);
+                        
+                    else if (cascade.get_position() > 200){
+                         wrist.move_absolute(340, 127);
                         }
                 }
                 pros::delay(10);
