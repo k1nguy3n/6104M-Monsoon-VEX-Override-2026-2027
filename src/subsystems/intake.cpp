@@ -21,7 +21,7 @@ namespace intake{
     void score_macro() {
         claw.move_voltage(-12000);
         pros::delay(100); 
-        wrist.move_absolute(340, 127);
+        wrist.move_absolute(600, 127);
     }
 
     void init(){
