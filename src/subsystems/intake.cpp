@@ -18,6 +18,12 @@ namespace intake{
         }
     }
 
+    void score_macro() {
+        claw.move_voltage(-12000);
+        pros::delay(100); 
+        wrist.move_absolute(340, 127);
+    }
+
     void init(){
         cascade.tare_position();
         wrist.tare_position();
@@ -47,11 +53,7 @@ namespace intake{
                     if (cascade.get_position() >= limit){cascade.move_voltage(0);}
                     else {cascade.move_voltage(12000);}
                 }
-                else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
-                    claw.move_voltage(-12000);
-                }
                 else {
-                    claw.move_voltage(12000*0.75);
                     intake.move_voltage(0);
                     cascade.move_voltage(0);
                 }
@@ -69,10 +71,20 @@ namespace intake{
                         }
 
                 }
+                //regular outtake 
+                else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+                    claw.move_voltage(-12000);
+                }
+
+                //score macro 
+                else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+                        score_macro();
+                        }
 
 
                 // Not running intake
                 else {
+                    claw.move_voltage(12000*0.75);
                     if (cascade.get_position() < 200){
                             wrist.move_absolute(0, 100);
                             
