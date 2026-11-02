@@ -1,15 +1,12 @@
 #include "main.h"
 #include "subsystems/intake.hpp"
-
 namespace intake{
-    
+    // Define controller, motor ports, motor type, and units
     pros::Controller master (pros::E_CONTROLLER_MASTER);
     pros::Motor intake (-14);
     pros::Motor claw (5);
     pros::MotorGroup cascade ({-1, 2},pros::MotorGears::green, pros::MotorUnits::degrees);
-    pros::Motor wrist (3,pros::MotorGears::green, pros::MotorUnits::degrees);
-    
-
+    pros::Motor wrist (3, pros::MotorGears::green, pros::MotorUnits::degrees);
     void wrist_debug() {
         while (true) {
             // int mode = wrist.get_brake_mode();
@@ -17,20 +14,17 @@ namespace intake{
             pros::delay(150);
         }
     }
-
     void score_macro() {
         claw.move_voltage(-12000);
         pros::delay(100); 
         wrist.move_absolute(600, 127);
     }
-
     void init(){
         cascade.tare_position();
         wrist.tare_position();
         wrist.set_brake_mode(pros::MotorBrake::hold);
         cascade.set_brake_mode(pros::MotorBrake::hold);
-    }
-    
+    }  
     void control(){ 
         init();
          pros::Task debug_task(wrist_debug);
@@ -57,19 +51,14 @@ namespace intake{
                     intake.move_voltage(0);
                     cascade.move_voltage(0);
                 }
-
-                // Need to do claw rotation stuff, get pos from motor? LB
-
-                //CLAW
+                //CLAW - Paralell (overrides auto code)
                 if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
                         if (wrist.get_position() < 340){
-                            wrist.move_voltage(12000);
-                            
+                            wrist.move_voltage(12000);           
                         }
                         else if (wrist.get_position() > 340){
                             wrist.brake();
                         }
-
                 }
                 //regular outtake 
                 else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
@@ -80,26 +69,23 @@ namespace intake{
                 else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
                         score_macro();
                         }
-
-
+                        
                 // Not running intake
                 else {
+                    // Claw automatically moves down --> parallel at certain cascade height
                     claw.move_voltage(12000*0.75);
                     if (cascade.get_position() < 200){
                             wrist.move_absolute(0, 100);
                             
                         }
                         
-                    else if (cascade.get_position() > 200){
+                    else if (cascade.get_position() >= 200){
                          wrist.move_absolute(340, 127);
                         }
                 }
                 pros::delay(10);
         }
     }
-
-
-
 }
 
 

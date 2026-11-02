@@ -7,7 +7,7 @@
 // Drive namepsace for 
 namespace drive{
 
-    pros::MotorGroup full_drive ({14, 9, -3, -19, -20, 7}); 
+    //pros::MotorGroup full_drive ({14, 9, -3, -19, -20, 7}); 
     // Left drive motors with appropiate signs for directions
     pros::MotorGroup left_drive ({-17, -12, -16});
     // Right drive motors with appropiate signs for directions
@@ -16,11 +16,11 @@ namespace drive{
     lemlib::Drivetrain drivetrain(&left_drive, // left motor group
                                 &right_drive, // right motor group
                                 11.0, // 10.8 inch track width
-                                lemlib::Omniwheel::NEW_325, // New 3.25" omnis in drive
-                                360, // Drive rpm is 360
+                                lemlib::Omniwheel::NEW_275, // New 3.25" omnis in drive
+                                450, // Drive rpm is 450
                                 8); // horizontal drift is 2 (for now)
     // Lateral PID controller constants
-    lemlib::ControllerSettings lateral_controller(13, // proportional gain (kP)
+    lemlib::ControllerSettings lateral_controller(10, // proportional gain (kP)
                                               0, // integral gain (kI)
                                               37, // derivative gain (kD)
                                               0, // anti windup
@@ -37,9 +37,9 @@ namespace drive{
     // 8.5, 0, 26
     // 9.55 26.5
     // Ceiling = ~10
-    lemlib::ControllerSettings angular_controller(9.55, // proportional gain (kP) 19.7 15.09 4.        when you did this you had 5.   when i did this i got 3.25
+    lemlib::ControllerSettings angular_controller(4, // proportional gain (kP) 19.7 15.09 4.        when you did this you had 5.   when i did this i got 3.25
                                                 0, // integral gain (kI)
-                                                26.5, // derivative gain (kD) 10  11.5     13 || INCREASE     when you did this you had 7.75.     when i did this i got 18
+                                                20, // derivative gain (kD) 10  11.5     13 || INCREASE     when you did this you had 7.75.     when i did this i got 18
                                                 0, // anti windup
                                                 1, // small error range, in inches
                                                 200, // small error range timeout, in milliseconds
@@ -53,21 +53,21 @@ namespace drive{
                         angular_controller, // Angular PID settings
                         localization::sensors); // Odometry sensors
     // Troubleshooting function that shows robot position in terminal
-    void odom_debug() {
-        while (true) {
-            lemlib::Pose pose = drive::chassis.getPose();
-            printf("x: %f | y: %f | theta: %f\n", pose.x, pose.y, pose.theta);
-            printf("theta: %f\n",localization::imu.get_heading());
-            pros::delay(50);
-        }
-    }
+    // void odom_debug() {
+    //     while (true) {
+    //         lemlib::Pose pose = drive::chassis.getPose();
+    //         printf("x: %f | y: %f | theta: %f\n", pose.x, pose.y, pose.theta);
+    //         printf("theta: %f\n",localization::imu.get_heading());
+    //         pros::delay(50);
+    //     }
+    // }
 
-    void odom_debug2() {
-        while (true) {
-            lemlib::Pose pose = drive::chassis.getPose();
-            pros::delay(1000);
-        }
-    }
+    // void odom_debug2() {
+    //     while (true) {
+    //         lemlib::Pose pose = drive::chassis.getPose();
+    //         pros::delay(1000);
+    //     }
+    // }
 
     // Define controller
     pros::Controller controller(pros::E_CONTROLLER_MASTER);

@@ -25,10 +25,7 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
-
-	pros::lcd::register_btn1_cb(on_center_button);
+	drive::init();
 }
 
 /**
@@ -60,7 +57,22 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+	drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
+    pros::Task odom_debug(localization::odom_debug);
+
+	drive::chassis.setPose(0, 0, 0);
+    // Tuning
+    //drive::chassis.turnToHeading(180, 10000, {maxSpeed: 127});
+	//drive::chassis.moveToPoint(0, 48, 10000);
+    drive::chassis.moveToPose(0, 48, 0, 10000, {maxSpeed: 127});
+    //drive::chassis.moveToPose(48, 48, 0, 3000, {.lead = 0.5});
+    //drive::chassis.moveToPose(0, 48, 270, 10000);
+
+
+
+
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task

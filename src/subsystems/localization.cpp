@@ -8,22 +8,30 @@
 namespace localization{
     // Odom system sensors (put in new file later?)
     pros::Imu imu(11);
-    pros::Rotation horiz_sensor(6);
-    lemlib::TrackingWheel horiz_tw(&horiz_sensor, lemlib::Omniwheel::NEW_2, -1);
+    pros::Rotation vertical_sensor(20);
+    lemlib::TrackingWheel vert_tw(&vertical_sensor, lemlib::Omniwheel::NEW_2, -1);
     // Group odom components
-    lemlib::OdomSensors sensors(nullptr, // vertical tracking wheels
+    lemlib::OdomSensors sensors(&vert_tw, // vertical tracking wheels
                             nullptr,    // set to nullptr as we are using IMEs
-                            &horiz_tw, // horizontal tracking wheel 1
+                            nullptr, // horizontal tracking wheel 1
                             nullptr, // horiz tracking wheel 2, nullptr (don't have 2nd one)
                             &imu); // inertial sensor
-   
+    void odom_debug() {
+        while (true) {
+            lemlib::Pose pose = drive::chassis.getPose();
+            printf("x: %f | y: %f | theta: %f\n", pose.x, pose.y, pose.theta);
+            printf("theta: %f\n",localization::imu.get_heading());
+            pros::delay(50);
+        }
+    }
+
     /* Sensors and lateral + angular offsets (all guessed lol) in a system
     {sensor, vertical offset, horizontal offset, angular offset, calibration const 
     (when robot faces forward)}*/
-    dsr DSR {distSensor {pros::Distance(111), 0, 0, 0, 18.35/18.858268},
-            distSensor {pros::Distance(1), 3.0, 4.0, 180, 1},
-            distSensor {pros::Distance(12), 0, 4.5, 90, 1},
-            distSensor {pros::Distance(13), 0, 4.5, 270.0, 1}, 
+    dsr DSR {distSensor {pros::Distance(7), 0, 0, 0, 1},
+            distSensor {pros::Distance(8), 3.0, 4.0, 180, 1},
+            distSensor {pros::Distance(9), 0, 4.5, 90, 1},
+            distSensor {pros::Distance(6), 0, 4.5, 270.0, 1}, 
             imu};
     // Idk a good place to put this but paranoia func eventually
     float paranoia(float pose, auto position){
