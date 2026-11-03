@@ -2,6 +2,8 @@
 #include "subsystems/intake.hpp"
 #include "subsystems/drive.hpp"
 
+#include "subsystems/localization.hpp"
+
 /**
  * A callback function for LLEMU's center button.
  *
