@@ -24,7 +24,27 @@ namespace intake{
         wrist.tare_position();
         wrist.set_brake_mode(pros::MotorBrake::hold);
         cascade.set_brake_mode(pros::MotorBrake::hold);
-    }  
+    }
+
+    void init_test(){
+        if (wrist.get_position() < 340){
+            wrist.move_voltage(12000);           
+        }
+        else if (wrist.get_position() > 340){
+            wrist.brake();
+        }
+    }
+    // MAKE A FUNCTION TO HAVE CASCADE MOVE UP CERTAIN HEIGHT
+    void move_cascade(float height){
+        if (cascade.get_position() <= height) {
+            cascade.move_voltage(12000);
+        }
+        else {
+            cascade.move_voltage(0);
+        }
+
+    }
+
     void control(){ 
         init();
          pros::Task debug_task(wrist_debug);
@@ -68,22 +88,19 @@ namespace intake{
                 //score macro 
                 else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
                         score_macro();
-                        }
-                        
+                        }   
                 // Not running intake
                 else {
                     // Claw automatically moves down --> parallel at certain cascade height
                     claw.move_voltage(12000*0.75);
                     if (cascade.get_position() < 200){
-                            wrist.move_absolute(0, 100);
-                            
-                        }
-                        
+                        wrist.move_absolute(0, 100);        
+                    }
                     else if (cascade.get_position() >= 200){
-                         wrist.move_absolute(340, 127);
-                        }
+                        wrist.move_absolute(340, 127);
+                    }
                 }
-                pros::delay(10);
+            pros::delay(10);
         }
     }
 }

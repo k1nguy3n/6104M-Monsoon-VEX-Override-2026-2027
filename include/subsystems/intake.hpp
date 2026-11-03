@@ -14,6 +14,7 @@ namespace intake {
     //controller + initialization funcs
     void init();
     void control();
+    void score_macro(void); 
     
 }  
 
