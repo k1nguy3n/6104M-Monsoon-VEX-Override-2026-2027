@@ -66,9 +66,9 @@ namespace intake{
                     if (cascade.get_position() <= 0){cascade.move_voltage(0);}
                     else {cascade.move_voltage(-12000);} 
                 }
-                // if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
-                //     cascade.move_voltage(-12000);
-                // }
+                else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
+                    cascade.move_voltage(-12000);
+                }
 
                 else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
                     if (cascade.get_position() >= limit){cascade.move_voltage(0);}
