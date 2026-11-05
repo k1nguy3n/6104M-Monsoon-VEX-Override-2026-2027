@@ -19,7 +19,7 @@ void right_auton(){
     drive::chassis.moveToPoint(0, -58, 1000, {.forwards = false}, false);
     // Drop preload into alliance stake
     drive::chassis.moveToPoint(0, -48, 1000);
-    drive::chassis.turnToHeading(180, 500);
+    drive::chassis.turnToHeading(270, 500);
     drive::chassis.moveToPoint(-18, -48, 1000);
     intake::score_macro();
     // Move to Pin 2
