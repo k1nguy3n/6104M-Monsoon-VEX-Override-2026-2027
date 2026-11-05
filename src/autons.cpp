@@ -21,14 +21,15 @@ void right_auton(){
     drive::chassis.turnToHeading(180, 500);
     drive::chassis.moveToPoint(-18, -48, 1000);
     intake::score_macro();
-    // Pin 2
+    // Move to Pin 2
     drive::chassis.moveToPoint(-10, -48, 1000, {.forwards = false}, 1000);
     drive::chassis.turnToPoint(-24, -24, 1000);
     drive::chassis.moveToPoint(-24, -24, 1000, {.forwards = false, .maxSpeed = 50}, 1000);
-
     //
+    drive::chassis.turnToPoint(-18, -48, 1000);
+    drive::chassis.moveToPoint(-18, -48, 1000);
     intake::score_macro();
-
+    //
 
 
 

@@ -38,13 +38,22 @@ namespace intake{
     }
     // MAKE A FUNCTION TO HAVE CASCADE MOVE UP CERTAIN HEIGHT
     void move_cascade(float height){
-        if (cascade.get_position() <= height) {
-            cascade.move_voltage(12000);
-        }
-        else {
-            cascade.move_voltage(0);
+        while (cascade.get_position() <= height - 20 || cascade.get_position() >= height + 20){
+            if (cascade.get_position() <= height - 20) {
+                cascade.move_voltage(12000);
+            }
+            else if (cascade.get_position() >= height + 20) {
+                cascade.move_voltage(-12000);
+            }
+            else {
+                cascade.move_voltage(0);
+            }
         }
     }
+
+    // Claw function with 
+
+
 
     void control(){ 
         init();
