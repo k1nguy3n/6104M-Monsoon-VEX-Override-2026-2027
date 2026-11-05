@@ -58,7 +58,7 @@ void skills_auton(){
 
     drive::chassis.turnToHeading(135, 500);
     drive::chassis.moveToPoint(-28, -16, 1000, {.forwards = true, .earlyExitRange = 4}, false);
-    drive::chassis.moveToPoint(-24, -24, 1000, {.forwards = false, .maxSpeed = 50}, 1000);
+    drive::chassis.moveToPoint(-28, -16, 1000, {.forwards = false, .maxSpeed = 50}, 1000);
     //
 
     //wrist.move_absolute(100, 127);
