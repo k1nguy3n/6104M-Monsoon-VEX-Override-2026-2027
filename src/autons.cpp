@@ -11,6 +11,7 @@ void left_auton(){
 
 void right_auton(){
     drive::chassis.setPose(0, -58, 90);
+    intake::claw.move_voltage(-12000);
     // Toggle
     drive::chassis.moveToPoint(0, -50, 1000);
     drive::chassis.moveToPoint(0, -58, 1000, {.forwards = false}, false);
@@ -25,13 +26,18 @@ void right_auton(){
     drive::chassis.moveToPoint(-10, -48, 1000, {.forwards = false}, 1000);
     drive::chassis.turnToPoint(-24, -24, 1000);
     drive::chassis.moveToPoint(-24, -24, 1000, {.forwards = false, .maxSpeed = 50}, 1000);
-    //
-    drive::chassis.turnToPoint(-18, -48, 1000);
-    drive::chassis.moveToPoint(-18, -48, 1000);
+    // Score on goal
+    drive::chassis.turnToPoint(-20, -48, 1000);
+    drive::chassis.moveToPoint(-20, -48, 1000);
     intake::score_macro();
-    //
-
-
+    // Pin 3
+    drive::chassis.moveToPoint(-20, -40, 1000);
+    drive::chassis.turnToPoint(-48, -48, 1000);
+    drive::chassis.moveToPoint(-48, -48, 1000, {.forwards = false, .maxSpeed = 50}, 1000);
+    // Score on goal
+    drive::chassis.turnToPoint(-20, -48, 1000);
+    drive::chassis.moveToPoint(-20, -48, 1000);
+    intake::score_macro();
 
 }
 
