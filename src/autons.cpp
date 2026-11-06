@@ -64,8 +64,8 @@ void skills_auton(){
     intake::wrist.move_absolute(600, 127);
 
     drive::chassis.turnToHeading(135, 500);
-    drive::chassis.moveToPoint(-24, -24, 1000, {.forwards = true, .earlyExitRange = 6}, false);
-    drive::chassis.moveToPoint(-24, -24, 1000, {.forwards = false, .maxSpeed = 50}, 1000);
+    drive::chassis.moveToPoint(-28, -16, 1000, {.forwards = true, .earlyExitRange = 6}, false);
+    drive::chassis.moveToPoint(-28, -16, 1000, {.forwards = true, .maxSpeed = 50}, 1000);
     //
     intake::wrist.move_absolute(100, 127);
     pros::delay(200);
@@ -74,7 +74,8 @@ void skills_auton(){
     //raise the cascade for 400 ms 
     cascade_time(intake::raise, 400);
     pros::delay(400);
-    //drive::chassis.moveToPoint(-24, -24, 1000);
+
+    drive::chassis.moveToPoint(-24, -24, 1000);
     drive::chassis.turnToHeading(270, 500);
     drive::chassis.moveToPoint(-39, -24, 1000);
 
@@ -89,7 +90,7 @@ void skills_auton(){
 
     drive::chassis.turnToHeading(225, 500);
     drive::chassis.moveToPoint(-44, -39, 1000, {.forwards = true, .earlyExitRange = 5}, false);
-    drive::chassis.moveToPoint(-44, -39, 1000, {.forwards = false, .maxSpeed = 50}, 1000);
+    drive::chassis.moveToPoint(-44, -39, 1000, {.forwards = true, .maxSpeed = 50}, 1000);
 
     intake::wrist.move_absolute(100, 127);
     pros::delay(200);
