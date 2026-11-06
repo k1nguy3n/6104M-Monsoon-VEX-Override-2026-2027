@@ -71,7 +71,11 @@ void autonomous() {
     //drive::chassis.moveToPose(48, 48, 0, 3000, {.lead = 0.5});
     //drive::chassis.moveToPose(0, 48, 270, 10000);
 
+	//left_auton();
 	skills_auton();
+	//right_auton();
+	//left_PRELOAD_ONLY_auton();
+	//right_PRELOAD_ONLY_auton();
 
 
 
