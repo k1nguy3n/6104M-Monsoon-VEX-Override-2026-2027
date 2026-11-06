@@ -2,7 +2,7 @@
 #define _AUTONS_HPP_
 
 void skills_auton(void);
-void left_auto(void);
+void left_auton(void);
 
 
 
