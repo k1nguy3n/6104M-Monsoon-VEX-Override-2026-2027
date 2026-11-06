@@ -1,7 +1,7 @@
 #include "main.h"
 #include "subsystems/intake.hpp"
 #include "subsystems/drive.hpp"
-
+#include "autons.hpp"
 #include "subsystems/localization.hpp"
 
 /**
@@ -63,14 +63,15 @@ void autonomous() {
 	drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
     pros::Task odom_debug(localization::odom_debug);
 
-	drive::chassis.setPose(0, 0, 0);
+	// drive::chassis.setPose(0, 0, 0);
     // Tuning
     //drive::chassis.turnToHeading(180, 10000, {maxSpeed: 127});
 	//drive::chassis.moveToPoint(0, 48, 10000);
-    drive::chassis.moveToPose(0, 48, 0, 10000, {maxSpeed: 127});
+    // drive::chassis.moveToPose(0, 48, 0, 10000, {maxSpeed: 127});
     //drive::chassis.moveToPose(48, 48, 0, 3000, {.lead = 0.5});
     //drive::chassis.moveToPose(0, 48, 270, 10000);
 
+	skills_auton();
 
 
 

@@ -4,21 +4,29 @@
 //inclusions
 #include "api.h"
 #include "lemlib/api.hpp"
+#include "main.h"
 
 
 namespace intake {
     
-    pros::Motor intake (-14);
-    pros::Motor claw (5);
-    pros::MotorGroup cascade ({-1, 2},pros::MotorGears::green, pros::MotorUnits::degrees);
-    pros::Motor wrist (3, pros::MotorGears::green, pros::MotorUnits::degrees);
-    pros::adi::Pneumatics side_toggle('a', false);
-   
+    extern pros::Motor intake;
+    extern pros::Motor claw;
+    extern pros::MotorGroup cascade;
+    extern pros::Motor wrist;
+    extern pros::adi::Pneumatics side_toggle;
     
+
+    enum cascade_pose {raise, lower};
+
+    void intake_time (uint32_t millisec);
+    void move_cascade(float height);
+    void cascade_time(cascade_pose, uint32_t millisec);
+
     //controller + initialization funcs
     void init();
     void control();
     void score_macro(void); 
+
     
 }  
 

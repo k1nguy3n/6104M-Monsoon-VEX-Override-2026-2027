@@ -36,6 +36,7 @@ namespace intake{
             wrist.brake();
         }
     }
+    
     // MAKE A FUNCTION TO HAVE CASCADE MOVE UP CERTAIN HEIGHT
     void move_cascade(float height){
         while (cascade.get_position() <= height - 20 || cascade.get_position() >= height + 20){
@@ -51,9 +52,26 @@ namespace intake{
         }
     }
 
-    // Claw function with 
+    // Intake time function
+    void intake_time (uint32_t millisec){
+        intake.move_voltage(12000);
+        pros::delay(millisec);
+        intake.move_voltage(0);
+    }
 
-
+    
+    void cascade_time(cascade_pose, uint32_t millisec){
+        if (cascade_pose::raise){
+            cascade.move_voltage(12000);
+            pros::delay(millisec);
+            cascade.move_voltage(0);
+        }
+        else if (cascade_pose::lower){
+            cascade.move_voltage(-12000);
+            pros::delay(millisec);
+            cascade.move_voltage(0);
+        }
+    }
 
     void control(){ 
         init();
