@@ -10,13 +10,13 @@ void left_auton(){
 }
 
 void right_auton(){
-    drive::chassis.setPose(0, -58, 90);
+    drive::chassis.setPose(0, -58, 0);
     intake::claw.move_voltage(-12000);
     // Toggle
     drive::chassis.moveToPoint(0, -50, 1000);
-    drive::chassis.moveToPoint(0, -58, 1000, {.forwards = false}, false);
+    drive::chassis.moveToPoint(0, -61, 1000, {.forwards = false}, false);
     drive::chassis.moveToPoint(0, -50, 1000);
-    drive::chassis.moveToPoint(0, -58, 1000, {.forwards = false}, false);
+    drive::chassis.moveToPoint(0, -61, 1000, {.forwards = false}, false);
     // Drop preload into alliance stake
     drive::chassis.moveToPoint(0, -48, 1000);
     drive::chassis.turnToHeading(270, 500);
@@ -42,29 +42,29 @@ void right_auton(){
 }
 
 void skills_auton(){
-    drive::chassis.setPose(-58, 0, 0);
+    drive::chassis.setPose(-58, 0, 90);
     // Toggle
     intake::wrist.move_absolute(340, 127);
      // Toggle
     drive::chassis.moveToPoint(-50, 0, 1000);
-    drive::chassis.moveToPoint(-58, 0, 1000, {.forwards = false}, false);
+    drive::chassis.moveToPoint(-61, 0, 1000, {.forwards = false}, false);
     drive::chassis.moveToPoint(-50, 0, 1000);
-    drive::chassis.moveToPoint(-58, 0, 1000, {.forwards = false}, false);
+    drive::chassis.moveToPoint(-61, 0, 1000, {.forwards = false}, false);
     // Drop preload into alliance stake
     drive::chassis.moveToPoint(-47, 0, 1000);
-    drive::chassis.turnToHeading(270, 500);
-    drive::chassis.moveToPoint(-47, -16, 1000);
+    drive::chassis.turnToHeading(180, 500);
+    drive::chassis.moveToPoint(-47, -18, 1000);
 
-   // outake the claw (no score macro)
+   intake::claw.move_voltage(-12000);
 
     // Move to Pin 2
-    drive::chassis.moveToPoint(-40, 0, 1000, {.forwards = false}, 1000);
+    drive::chassis.moveToPoint(-47, 0, 1000, {.forwards = false}, 1000);
 
     //raise the wrist to 600 degrees
     intake::wrist.move_absolute(600, 127);
 
-    drive::chassis.turnToHeading(315, 500);
-    drive::chassis.moveToPoint(-28, -16, 1000, {.forwards = true, .earlyExitRange = 4}, false);
+    drive::chassis.turnToHeading(135, 500);
+    drive::chassis.moveToPoint(-24, -24, 1000, {.forwards = true, .earlyExitRange = 6}, false);
     drive::chassis.moveToPoint(-24, -24, 1000, {.forwards = false, .maxSpeed = 50}, 1000);
     //
     intake::wrist.move_absolute(100, 127);
@@ -73,9 +73,9 @@ void skills_auton(){
 
     //raise the cascade for 400 ms 
     cascade_time(intake::raise, 400);
-
-    drive::chassis.moveToPoint(-24, -24, 1000);
-    drive::chassis.turnToHeading(180, 500);
+    pros::delay(400);
+    //drive::chassis.moveToPoint(-24, -24, 1000);
+    drive::chassis.turnToHeading(270, 500);
     drive::chassis.moveToPoint(-39, -24, 1000);
 
     //spin claw opposite driection
@@ -87,7 +87,7 @@ void skills_auton(){
     cascade_time(intake::lower, 400);
     intake::wrist.move_absolute(600, 127);
 
-    drive::chassis.turnToHeading(135, 500);
+    drive::chassis.turnToHeading(225, 500);
     drive::chassis.moveToPoint(-44, -39, 1000, {.forwards = true, .earlyExitRange = 5}, false);
     drive::chassis.moveToPoint(-44, -39, 1000, {.forwards = false, .maxSpeed = 50}, 1000);
 
@@ -97,7 +97,7 @@ void skills_auton(){
     //raise the cascade for 600 ms 
     cascade_time(intake::raise, 600);
     drive::chassis.moveToPoint(-48, -48, 1000);
-    drive::chassis.turnToHeading(90, 500);
+    drive::chassis.turnToHeading(0, 500);
     drive::chassis.moveToPoint(-48, -32, 1000);
 
     //spin claw opposite direction
