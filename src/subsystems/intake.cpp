@@ -7,7 +7,7 @@ namespace intake{
     pros::Motor claw (5);
     pros::MotorGroup cascade ({-1, 2},pros::MotorGears::green, pros::MotorUnits::degrees);
     pros::Motor wrist (3, pros::MotorGears::green, pros::MotorUnits::degrees);
-    pros::adi::Pneumatics side_toggle('a', false);
+    pros::adi::Pneumatics side_toggle('a', true);
 
     void wrist_debug() {
         while (true) {
@@ -75,7 +75,7 @@ namespace intake{
 
     void control(){ 
         init();
-         pros::Task debug_task(wrist_debug);
+        pros::Task debug_task(wrist_debug);
         float limit = 1042000;
         while (true) {
                 // Up slow
@@ -122,7 +122,9 @@ namespace intake{
                 else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
                     claw.move_voltage(-12000);
                 }
-
+                else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
+                    wrist.move_voltage(-12000);
+                }
                 //score macro 
                 else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
                         score_macro();

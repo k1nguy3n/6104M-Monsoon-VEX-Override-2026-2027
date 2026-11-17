@@ -29,6 +29,7 @@ void left_auton(){
     drive::chassis.moveToPoint(-29.5, -17, 1000, {.forwards = true, .earlyExitRange = 8}, false);
     drive::chassis.moveToPoint(-27.5, -22.25, 1000, {.forwards = true, .maxSpeed = 50}, 1000);
     //
+    pros::delay(500);
     intake::wrist.move_absolute(-100, 127);
     pros::delay(700);
     intake::wrist.move_absolute(340, 127);
@@ -36,7 +37,7 @@ void left_auton(){
     //raise the cascade for 400 ms 
     // cascade_time(intake::raise, 400);
     intake::cascade.move_voltage(12000);
-    pros::delay(600);
+    pros::delay(750);
     intake::cascade.move_voltage(0);
 
 
@@ -51,6 +52,7 @@ void left_auton(){
     intake::claw.move_voltage(-12000);
     pros::delay(500);
     drive::chassis.moveToPoint(-24, -25, 1000);
+    pros::delay(1000);
     intake::cascade.move_voltage(-12000);
     intake::wrist.move_absolute(0, 127);
 

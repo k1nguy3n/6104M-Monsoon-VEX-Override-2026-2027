@@ -61,7 +61,7 @@ void competition_initialize() {}
  */
 void autonomous() {
 	drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
-    pros::Task odom_debug(localization::odom_debug);
+    //pros::Task odom_debug(localization::odom_debug);
 
 	// drive::chassis.setPose(0, 0, 0);
     // Tuning
@@ -70,9 +70,12 @@ void autonomous() {
     // drive::chassis.moveToPose(0, 48, 0, 10000, {maxSpeed: 127});
     //drive::chassis.moveToPose(48, 48, 0, 3000, {.lead = 0.5});
     //drive::chassis.moveToPose(0, 48, 270, 10000);
-
-	//left_auton();
-	skills_auton();
+	//still_working_big_skills_auton();
+	left_auton();
+	// intake::wrist.move_absolute(0, 127);
+    // drive::chassis.turnToHeading(90, 500);
+    // drive::chassis.moveToPose(-6, -6, 45, 1000);
+	//small_skills_auton();
 	//right_auton();
 	//left_PRELOAD_ONLY_auton();
 	//right_PRELOAD_ONLY_auton();
