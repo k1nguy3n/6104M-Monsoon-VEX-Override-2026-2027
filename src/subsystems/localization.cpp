@@ -20,8 +20,10 @@ namespace localization{
         while (true) {
             lemlib::Pose pose = drive::chassis.getPose();
             printf("x: %f | y: %f | theta: %f\n", pose.x, pose.y, pose.theta);
-            printf("theta: %f\n",localization::imu.get_heading());
-            pros::delay(50);
+            printf("heading: %f\n",localization::imu.get_heading());
+            //printf("rotation: %f\n",localization::imu.get_rotation());
+            //printf("is installed: %f\n",localization::imu.is_installed());
+            pros::delay(100);
         }
     }
 

@@ -28,6 +28,7 @@ void on_center_button() {
  */
 void initialize() {
 	drive::init();
+	pros::delay(1000);
 }
 
 /**
