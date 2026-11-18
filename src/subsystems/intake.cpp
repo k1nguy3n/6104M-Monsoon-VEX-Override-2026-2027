@@ -21,7 +21,7 @@ namespace intake{
         pros::delay(100); 
         wrist.move_absolute(600, 127);
     }
-    void init(){
+    void inititalze_Mechs(){
         cascade.tare_position();
         wrist.tare_position();
         wrist.set_brake_mode(pros::MotorBrake::hold);
@@ -74,7 +74,7 @@ namespace intake{
     }
 
     void control(){ 
-        init();
+        inititalze_Mechs();
         pros::Task debug_task(wrist_debug);
         float limit = 1042000;
         while (true) {

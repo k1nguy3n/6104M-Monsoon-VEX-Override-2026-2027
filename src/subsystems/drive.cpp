@@ -90,7 +90,7 @@ namespace drive{
     // Initialize drivetrain with a 3 second delay so it remins undisturbed
     void init(){
         chassis.calibrate();
-        localization::imu.reset();
+        //localization::imu.reset();  commeted out to test smth 
         pros::delay(3000);
     }
     void control() {

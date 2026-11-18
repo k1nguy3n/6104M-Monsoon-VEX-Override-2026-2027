@@ -60,11 +60,12 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
+	drive::chassis.setPose(0, 0, 0);
 	drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
     pros::Task odom_debug(localization::odom_debug);
 	//pros::Task torque_debug(drive::torque_debug);
 
-	drive::chassis.setPose(0, 0, 0);
+	
     // Tuning
     //drive::chassis.turnToHeading(90, 10000, {maxSpeed: 127});
 	// drive::chassis.setPose(0, 0, 0);
