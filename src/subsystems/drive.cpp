@@ -68,12 +68,29 @@ namespace drive{
     //     }
     // }
 
+    void torque_debug(){
+        while (true){
+            // std::cout << "Motor Torques: -17" << pros::Motor(-17).get_torque();
+            // std::cout << "Motor Torques: -12" << pros::Motor(-12).get_torque();
+            // std::cout << "Motor Torques: -16" << pros::Motor(-16).get_torque();
+            // std::cout << "Motor Torques: 15" << pros::Motor(15).get_torque();
+            // std::cout << "Motor Torques: 18" << pros::Motor(18).get_torque();
+            // std::cout << "Motor Torques: 13" << pros::Motor(13).get_torque();
+            printf("Motor Torques: -17: %f\n", pros::Motor(-17).get_torque());
+            printf("Motor Torques: -12: %f\n", pros::Motor(-12).get_torque());
+            printf("Motor Torques: -16: %f\n", pros::Motor(-16).get_torque());
+            printf("Motor Torques: 15: %f\n", pros::Motor(15).get_torque());
+            printf("Motor Torques: 18: %f\n", pros::Motor(18).get_torque());
+            printf("Motor Torques: 13: %f\n", pros::Motor(13).get_torque());
+        }
+    }
+
     // Define controller
     pros::Controller controller(pros::E_CONTROLLER_MASTER);
     // Initialize drivetrain with a 3 second delay so it remins undisturbed
     void init(){
         chassis.calibrate();
-       // localization::imu.reset();
+        localization::imu.reset();
         pros::delay(3000);
     }
     void control() {

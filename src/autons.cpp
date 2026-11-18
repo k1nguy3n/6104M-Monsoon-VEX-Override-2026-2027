@@ -4,7 +4,7 @@
 #include "subsystems/intake.hpp"
 
 void left_auton(){
-    drive::chassis.setPose(-57, 0, 90);
+    drive::chassis.setPose(-58, 0, 90);
     intake::claw.move_voltage(12000);
     intake::wrist.move_absolute(340, 127);
      // Toggle
@@ -14,47 +14,47 @@ void left_auton(){
     drive::chassis.moveToPoint(-61, 0, 500, {.forwards = false}, false);
     // Drop preload into alliance stake
     drive::chassis.moveToPoint(-47.5, 0, 1000);
-    drive::chassis.turnToHeading(180, 500);
-    drive::chassis.moveToPoint(-47.5, -18.5, 1000);
-    pros::delay(600);
-    intake::claw.move_voltage(-12000);
+    drive::chassis.turnToHeading(180, 700);
+    // drive::chassis.moveToPoint(-47.5, -18.5, 1000);
+    // pros::delay(600);
+    // intake::claw.move_voltage(-12000);
 
-    // Move to Pin 2
-    drive::chassis.moveToPoint(-47.5, 0, 1000, {.forwards = false}, 1000);
-    intake::claw.move_voltage(12000);
-    //raise the wrist to 600 degrees
-    intake::wrist.move_absolute(600, 127);
-    // Pin 2 eaten yay
-    drive::chassis.turnToHeading(135, 500);
-    drive::chassis.moveToPoint(-29.5, -17, 1000, {.forwards = true, .earlyExitRange = 8}, false);
-    drive::chassis.moveToPoint(-27.5, -22.25, 1000, {.forwards = true, .maxSpeed = 50}, 1000);
-    //
-    pros::delay(500);
-    intake::wrist.move_absolute(-100, 127);
-    pros::delay(700);
-    intake::wrist.move_absolute(340, 127);
+    // // Move to Pin 2
+    // drive::chassis.moveToPoint(-47.5, 0, 1000, {.forwards = false}, 1000);
+    // intake::claw.move_voltage(12000);
+    // //raise the wrist to 600 degrees
+    // intake::wrist.move_absolute(600, 127);
+    // // Pin 2 eaten yay
+    // drive::chassis.turnToHeading(135, 500);
+    // drive::chassis.moveToPoint(-29.5, -17, 1000, {.forwards = true, .earlyExitRange = 8}, false);
+    // drive::chassis.moveToPoint(-27.5, -22.25, 1000, {.forwards = true, .maxSpeed = 50}, 1000);
+    // //
+    // pros::delay(500);
+    // intake::wrist.move_absolute(-100, 127);
+    // pros::delay(700);
+    // intake::wrist.move_absolute(340, 127);
 
-    //raise the cascade for 400 ms 
-    // cascade_time(intake::raise, 400);
-    intake::cascade.move_voltage(12000);
-    pros::delay(750);
-    intake::cascade.move_voltage(0);
+    // //raise the cascade for 400 ms 
+    // // cascade_time(intake::raise, 400);
+    // intake::cascade.move_voltage(12000);
+    // pros::delay(750);
+    // intake::cascade.move_voltage(0);
 
 
-    pros::delay(400);
+    // pros::delay(400);
 
-    drive::chassis.moveToPoint(-24, -25, 1000);
-    drive::chassis.turnToHeading(270, 500);
-    drive::chassis.moveToPoint(-40, -25, 1000);
+    // drive::chassis.moveToPoint(-24, -25, 1000);
+    // drive::chassis.turnToHeading(270, 500);
+    // drive::chassis.moveToPoint(-40, -25, 1000);
 
-    // //spin claw opposite driection
-    pros::delay(700);
-    intake::claw.move_voltage(-12000);
-    pros::delay(500);
-    drive::chassis.moveToPoint(-24, -25, 1000);
-    pros::delay(1000);
-    intake::cascade.move_voltage(-12000);
-    intake::wrist.move_absolute(0, 127);
+    // // //spin claw opposite driection
+    // pros::delay(700);
+    // intake::claw.move_voltage(-12000);
+    // pros::delay(500);
+    // drive::chassis.moveToPoint(-24, -25, 1000);
+    // pros::delay(1000);
+    // intake::cascade.move_voltage(-12000);
+    // intake::wrist.move_absolute(0, 127);
 
 
 }
@@ -177,12 +177,6 @@ void right_PRELOAD_ONLY_auton(){
     intake::claw.move_voltage(12000);
 }
 
-
-
-
-
-
-
 void small_skills_auton(){
     drive::chassis.setPose(-57, 0, 90);
     intake::claw.move_voltage(12000);
@@ -237,21 +231,6 @@ void small_skills_auton(){
     drive::chassis.moveToPose(-6, -6, 45, 1000);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void still_working_big_skills_auton(){
     drive::chassis.setPose(-57, 0, 90);
@@ -313,10 +292,7 @@ void still_working_big_skills_auton(){
     intake::claw.move_voltage(12000);
 
 
-
-
-
-//// seconds tower 
+//// seconds pin 
 
 
     drive::chassis.turnToHeading(225, 500);
@@ -328,20 +304,14 @@ void still_working_big_skills_auton(){
     intake::wrist.move_absolute(340, 127);
     //raise the cascade for 600 ms 
     cascade_time(intake::raise, 600);
+    // Score pin
     drive::chassis.moveToPoint(-48, -48, 1000);
     drive::chassis.turnToHeading(0, 500);
     drive::chassis.moveToPoint(-48, -32, 1000);
-    //spin claw opposite direction
+    // spin claw opposite direction
     intake::claw.move_voltage(-12000);
-    
 
-
-
-
-
-
-
-    ///matchloader 
+    ///matchload 1 
     drive::chassis.moveToPoint(-48, -62, 1000, {.forwards = false}, 1000);
 
     //lowerr the cascade for 600 ms
@@ -370,6 +340,7 @@ void still_working_big_skills_auton(){
     cascade_time(intake::lower, 600);
 
 
+
     intake::wrist.move_absolute(0, 127);
 
     drive::chassis.turnToHeading(90, 500);
@@ -390,6 +361,9 @@ void still_working_big_skills_auton(){
     drive::chassis.moveToPose(-6, -6, 45, 1000);
     //spin claw opposite direction
     intake::claw.move_voltage(-12000);
+
+
+
 
 }
 

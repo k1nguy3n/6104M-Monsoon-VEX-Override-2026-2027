@@ -61,17 +61,28 @@ void competition_initialize() {}
  */
 void autonomous() {
 	drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
-    //pros::Task odom_debug(localization::odom_debug);
+    pros::Task odom_debug(localization::odom_debug);
+	//pros::Task torque_debug(drive::torque_debug);
 
-	// drive::chassis.setPose(0, 0, 0);
+	drive::chassis.setPose(0, 0, 0);
     // Tuning
-    //drive::chassis.turnToHeading(180, 10000, {maxSpeed: 127});
+    //drive::chassis.turnToHeading(90, 10000, {maxSpeed: 127});
+	// drive::chassis.setPose(0, 0, 0);
+	// localization::imu.reset();
+	// pros::delay(2000);
+	drive::chassis.turnToHeading(-90, 10000, {.direction = AngularDirection::CCW_COUNTERCLOCKWISE, maxSpeed: 127});
+
+	// std::cout << "Motor Torques: " << drive::left_drive.get_torque();
+	// std::cout << "Motor Torques: " << drive::right_drive.get_torque();
+
+
+
 	//drive::chassis.moveToPoint(0, 48, 10000);
     // drive::chassis.moveToPose(0, 48, 0, 10000, {maxSpeed: 127});
     //drive::chassis.moveToPose(48, 48, 0, 3000, {.lead = 0.5});
     //drive::chassis.moveToPose(0, 48, 270, 10000);
 	//still_working_big_skills_auton();
-	left_auton();
+	//left_auton();
 	// intake::wrist.move_absolute(0, 127);
     // drive::chassis.turnToHeading(90, 500);
     // drive::chassis.moveToPose(-6, -6, 45, 1000);
@@ -79,6 +90,7 @@ void autonomous() {
 	//right_auton();
 	//left_PRELOAD_ONLY_auton();
 	//right_PRELOAD_ONLY_auton();
+	//still_working_big_skills_auton();
 
 
 

@@ -23,6 +23,7 @@ namespace drive{
     void init(void);
     void odom_debug(void);
     void odom_debug2(void);
+    void torque_debug(void);
 
 }
 
