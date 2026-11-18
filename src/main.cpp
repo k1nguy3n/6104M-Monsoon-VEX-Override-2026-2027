@@ -61,7 +61,7 @@ void competition_initialize() {}
  */
 void autonomous() {
 	drive::chassis.setBrakeMode(pros::E_MOTOR_BRAKE_COAST);
-    pros::Task odom_debug(localization::odom_debug);
+    pros::Task odom_debug(drive::odom_debug);
 	//pros::Task torque_debug(drive::torque_debug);
 
 	drive::chassis.setPose(0, 0, 0);
@@ -70,7 +70,7 @@ void autonomous() {
 	// drive::chassis.setPose(0, 0, 0);
 	// localization::imu.reset();
 	// pros::delay(2000);
-	drive::chassis.turnToHeading(-90, 10000, {.direction = AngularDirection::CCW_COUNTERCLOCKWISE, maxSpeed: 127});
+	drive::chassis.turnToHeading(-180, 10000, {.direction = AngularDirection::CCW_COUNTERCLOCKWISE, maxSpeed: 127});
 
 	// std::cout << "Motor Torques: " << drive::left_drive.get_torque();
 	// std::cout << "Motor Torques: " << drive::right_drive.get_torque();

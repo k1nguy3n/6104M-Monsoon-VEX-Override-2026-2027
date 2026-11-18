@@ -8,10 +8,10 @@
 
 namespace localization{
     extern pros::Distance left_dist;
-    extern pros::IMU imu;
-    // Odom system sensors
-    extern lemlib::OdomSensors sensors; // inertial sensor
-    void odom_debug(void);
+    // extern pros::IMU imu;
+    // // Odom system sensors
+    // extern lemlib::OdomSensors sensors; // inertial sensor
+    // void odom_debug(void);
     
     enum Axis {x, neg_x, y, neg_y};
     enum Sensor {N = 1, S = 2, E = 3, W = 4};

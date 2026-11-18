@@ -19,6 +19,24 @@ namespace drive{
                                 450, // Drive rpm is 450
                                 8); // horizontal drift is 2 (for now)
     // Lateral PID controller constants
+    // Odom system sensors (put in new file later?)
+    pros::Imu imu(11);
+    pros::Rotation vertical_sensor(20);
+    lemlib::TrackingWheel vert_tw(&vertical_sensor, lemlib::Omniwheel::NEW_2, -1);
+    // Group odom components
+    lemlib::OdomSensors sensors(&vert_tw, // vertical tracking wheels
+                            nullptr,    // set to nullptr as we are using IMEs
+                            nullptr, // horizontal tracking wheel 1
+                            nullptr, // horiz tracking wheel 2, nullptr (don't have 2nd one)
+                            &imu); // inertial sensor
+    void odom_debug() {
+        while (true) {
+            lemlib::Pose pose = drive::chassis.getPose();
+            printf("x: %f | y: %f | theta: %f\n", pose.x, pose.y, pose.theta);
+            printf("theta: %f\n", imu.get_heading());
+            pros::delay(50);
+        }
+    }
     lemlib::ControllerSettings lateral_controller(9.5, // proportional gain (kP)
                                               0, // integral gain (kI)
                                               30, // derivative gain (kD)
@@ -50,7 +68,7 @@ namespace drive{
     lemlib::Chassis chassis(drivetrain, // Drivetrain settings
                         lateral_controller, // Lateral PID settings
                         angular_controller, // Angular PID settings
-                        localization::sensors); // Odometry sensors
+                        sensors); // Odometry sensors
     // Troubleshooting function that shows robot position in terminal
     // void odom_debug() {
     //     while (true) {
@@ -90,7 +108,7 @@ namespace drive{
     // Initialize drivetrain with a 3 second delay so it remins undisturbed
     void init(){
         chassis.calibrate();
-        localization::imu.reset();
+        imu.reset();
         pros::delay(3000);
     }
     void control() {

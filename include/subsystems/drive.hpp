@@ -6,6 +6,10 @@
 #include "lemlib/api.hpp"
 
 namespace drive{
+    extern pros::IMU imu;
+    // Odom system sensors
+    extern lemlib::OdomSensors sensors; // inertial sensor
+    void odom_debug(void);
     extern pros::MotorGroup full_drive;
     extern pros::MotorGroup left_drive; // Left drive motors
     extern pros::MotorGroup right_drive; // Right drive motors
