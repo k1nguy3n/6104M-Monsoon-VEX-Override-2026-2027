@@ -252,7 +252,7 @@ void still_working_big_skills_auton(){
 
 
 
-    // first tower
+    // goes for first pin cup stack 
     drive::chassis.moveToPoint(-47.5, 0, 1000, {.forwards = false}, 1000);
     intake::claw.move_voltage(12000);
     //raise the wrist to 600 degrees
@@ -288,7 +288,8 @@ void still_working_big_skills_auton(){
      intake::wrist.move_absolute(600, 127);
     drive::chassis.moveToPoint(-22, -25, 1000, {.forwards = false}, 1000);
     intake::cascade.move_voltage(-12000);
-
+    pros::delay(600);
+    intake::cascade.move_voltage(0);
     intake::claw.move_voltage(12000);
 
 
@@ -300,7 +301,7 @@ void still_working_big_skills_auton(){
     drive::chassis.moveToPoint(-44, -39, 1000, {.forwards = true, .maxSpeed = 50}, 1000);
 
     intake::wrist.move_absolute(100, 127);
-    pros::delay(200);
+    pros::delay(300);
     intake::wrist.move_absolute(340, 127);
     //raise the cascade for 600 ms 
     cascade_time(intake::raise, 600);
@@ -311,9 +312,15 @@ void still_working_big_skills_auton(){
     // spin claw opposite direction
     intake::claw.move_voltage(-12000);
 
-    ///matchload 1 
-    drive::chassis.moveToPoint(-48, -62, 1000, {.forwards = false}, 1000);
 
+
+
+
+
+
+    ///matchloading now (1)
+    drive::chassis.moveToPoint(-48, -62, 1000, {.forwards = false}, 1000);
+    intake::claw.move_voltage(12000);
     //lowerr the cascade for 600 ms
     cascade_time(intake::lower, 400);
     intake::wrist.move_absolute(0, 127);
@@ -332,35 +339,170 @@ void still_working_big_skills_auton(){
     drive::chassis.turnToHeading(0, 500);
     drive::chassis.moveToPoint(-48, -32, 1000);
 
-    //USE THE SCORE MACRO HERE 
+    //Scoreing pin cup
+    intake::claw.move_voltage(-12000);
+    intake::wrist.move_absolute(600, 127);
 
     drive::chassis.moveToPoint(-48, -62, 1000, {.forwards = false}, 1000);
 
     //lowerr the cascade for 600 ms
     cascade_time(intake::lower, 600);
+     intake::claw.move_voltage(12000);
+    intake::wrist.move_absolute(0, 127);
 
 
 
+
+    //Matchloading second (2)
+    drive::chassis.turnToHeading(90, 500);
+    drive::chassis.moveToPoint(-60, -62, 1000,{.forwards = false}, 1000);
+
+    //intake 400ms 
+    intake::intake_time(800);
+
+    intake::wrist.move_absolute(340, 127);
+    //raise the cascade for 600 ms
+    cascade_time(intake::raise, 800);
+
+    drive::chassis.moveToPoint(-48, -62, 1000);
+    drive::chassis.turnToHeading(0, 500);
+    drive::chassis.moveToPoint(-48, -32, 1000);
+
+    //Scoreing pin cup
+    intake::claw.move_voltage(-12000);
+    intake::wrist.move_absolute(600, 127);
+
+    drive::chassis.moveToPoint(-48, -62, 1000, {.forwards = false}, 1000);
+
+    //lowerr the cascade for 600 ms
+    cascade_time(intake::lower, 800);
+     intake::claw.move_voltage(12000);
+    intake::wrist.move_absolute(0, 127);
+    
+
+
+    //////////////Have just finished scoring the first full tower
+
+
+
+
+    //mathcloading just pin for new tower (1)
+    drive::chassis.turnToHeading(90, 500);
+    drive::chassis.moveToPoint(-60, -62, 1000,{.forwards = false}, 1000);
+    intake::intake_time(800);
+
+    intake::wrist.move_absolute(340, 127);
+    
+    //to goal 
+    drive::chassis.moveToPoint(-36, -62, 1000);
+    drive::chassis.turnToHeading(45, 500);
+    drive::chassis.moveToPoint(-28, -54, 1000);
+    
+    //score 
+    intake::claw.move_voltage(-12000);
+
+    drive::chassis.moveToPoint(-36, -62, 1000,{.forwards = false}, 1000);
+    intake::claw.move_voltage(12000);
+    intake::wrist.move_absolute(0, 127);
+    drive::chassis.turnToHeading(90, 500);
+    drive::chassis.moveToPoint(-60, -62, 1000,{.forwards = false}, 1000);
+
+
+
+
+
+    //mathcloading just pin cup for new tower (2)
+    intake::intake_time(800);
+
+    intake::wrist.move_absolute(340, 127);
+    
+    //to goal 
+    drive::chassis.moveToPoint(-36, -62, 1000);
+    cascade_time(intake::raise, 400);   
+    drive::chassis.turnToHeading(45, 500);
+    drive::chassis.moveToPoint(-28, -54, 1000);
+    
+    //score 
+    intake::claw.move_voltage(-12000);
+
+    drive::chassis.moveToPoint(-36, -62, 1000,{.forwards = false}, 1000);
+    intake::claw.move_voltage(12000);
+    cascade_time(intake::lower, 500);
     intake::wrist.move_absolute(0, 127);
 
     drive::chassis.turnToHeading(90, 500);
     drive::chassis.moveToPoint(-60, -62, 1000,{.forwards = false}, 1000);
 
-    //intake 400ms 
-    intake::intake_time(400);
 
-    drive::chassis.moveToPoint(-53, -62, 1000);
-    drive::chassis.turnToHeading(45, 500);
-    drive::chassis.moveToPose(-17, -13, 45, 1000);
+
+
+    //mathcloading 2nd pin cup for new tower (3)
+    intake::intake_time(800);
 
     intake::wrist.move_absolute(340, 127);
-    //raise the cascade for 600 ms
-    cascade_time(intake::raise, 600);
-
-
-    drive::chassis.moveToPose(-6, -6, 45, 1000);
-    //spin claw opposite direction
+    
+    //to goal 
+    drive::chassis.moveToPoint(-36, -62, 1000);
+    cascade_time(intake::raise, 800);   
+    drive::chassis.turnToHeading(45, 500);
+    drive::chassis.moveToPoint(-28, -54, 1000);
+    
+    //score 
     intake::claw.move_voltage(-12000);
+
+    drive::chassis.moveToPoint(-36, -62, 1000,{.forwards = false}, 1000);
+    intake::claw.move_voltage(12000);
+    cascade_time(intake::lower, 900);
+    intake::wrist.move_absolute(0, 127);
+    
+    drive::chassis.turnToHeading(90, 500);
+    drive::chassis.moveToPoint(-60, -62, 1000,{.forwards = false}, 1000);
+
+
+    
+    //mathcloading 3rd pin cup for new tower (4)
+    intake::intake_time(800);
+
+    intake::wrist.move_absolute(340, 127);
+    
+    //to goal 
+    drive::chassis.moveToPoint(-36, -62, 1000);
+    cascade_time(intake::raise, 900);   
+    drive::chassis.turnToHeading(45, 500);
+    drive::chassis.moveToPoint(-28, -54, 1000);
+    
+    //score 
+    intake::claw.move_voltage(-12000);
+
+    drive::chassis.moveToPoint(-36, -62, 1000,{.forwards = false}, 1000);
+    intake::claw.move_voltage(12000);
+    cascade_time(intake::lower, 1000);
+    intake::wrist.move_absolute(0, 127);
+    
+    drive::chassis.turnToHeading(90, 500);
+    drive::chassis.moveToPoint(-60, -62, 1000,{.forwards = false}, 1000);
+
+    /////finish scoring 2nd tower and now going for pin for middle and toggle
+
+
+
+    //mathcloading just pin for middle (1)
+    intake::intake_time(800);
+
+    //to toggle
+    drive::chassis.moveToPoint(0, -62, 1000); 
+    
+    drive::chassis.turnToHeading(0, 500);
+
+    //toggle 
+    drive::chassis.moveToPoint(0, -52, 500);
+    drive::chassis.moveToPoint(0, -63, 500, {.forwards = false}, false);
+    drive::chassis.moveToPoint(0, -52, 500);
+    drive::chassis.moveToPoint(0, -63, 500, {.forwards = false}, false);
+
+
+
+/////still need to finish 
 
 
 
