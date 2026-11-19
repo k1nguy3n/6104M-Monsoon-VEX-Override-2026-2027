@@ -21,7 +21,7 @@ namespace drive{
     // Lateral PID controller constants
     // Odom system sensors (put in new file later?)
     pros::Imu imu(11);
-    pros::Rotation vertical_sensor(20);
+    pros::Rotation vertical_sensor(-20);
     lemlib::TrackingWheel vert_tw(&vertical_sensor, lemlib::Omniwheel::NEW_2, -1);
     // Group odom components
     lemlib::OdomSensors sensors(&vert_tw, // vertical tracking wheels
@@ -37,9 +37,9 @@ namespace drive{
             pros::delay(50);
         }
     }
-    lemlib::ControllerSettings lateral_controller(9.5, // proportional gain (kP)
+    lemlib::ControllerSettings lateral_controller(2, // proportional gain (kP)
                                               0, // integral gain (kI)
-                                              30, // derivative gain (kD)
+                                              0, // derivative gain (kD)
                                               0, // anti windup
                                               1, // small error range, in inches
                                               100, // small error range timeout, in milliseconds
@@ -54,7 +54,7 @@ namespace drive{
     // 8.5, 0, 26
     // 9.55 26.5
     // Ceiling = ~10
-    lemlib::ControllerSettings angular_controller(4, // proportional gain (kP) 19.7 15.09 4.        when you did this you had 5.   when i did this i got 3.25
+    lemlib::ControllerSettings angular_controller(2.5, // proportional gain (kP) 19.7 15.09 4.        when you did this you had 5.   when i did this i got 3.25
                                                 0, // integral gain (kI)
                                                 20, // derivative gain (kD) 10  11.5     13 || INCREASE     when you did this you had 7.75.     when i did this i got 18
                                                 0, // anti windup
@@ -108,7 +108,7 @@ namespace drive{
     // Initialize drivetrain with a 3 second delay so it remins undisturbed
     void init(){
         chassis.calibrate();
-        imu.reset();
+        // imu.reset();
         pros::delay(3000);
     }
     void control() {

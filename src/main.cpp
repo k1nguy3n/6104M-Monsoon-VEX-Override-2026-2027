@@ -28,7 +28,7 @@ void on_center_button() {
  */
 void initialize() {
 	drive::init();
-	pros::delay(1000);
+	//pros::delay(1000);
 }
 
 /**
@@ -72,15 +72,15 @@ void autonomous() {
 	// drive::chassis.setPose(0, 0, 0);
 	// localization::imu.reset();
 	// pros::delay(2000);
-	drive::chassis.turnToHeading(-180, 10000, {.direction = AngularDirection::CCW_COUNTERCLOCKWISE, maxSpeed: 127});
+	//drive::chassis.turnToHeading(-180, 10000, {maxSpeed: 127});
 
 	// std::cout << "Motor Torques: " << drive::left_drive.get_torque();
 	// std::cout << "Motor Torques: " << drive::right_drive.get_torque();
 
 
 
-	//drive::chassis.moveToPoint(0, 48, 10000);
-    // drive::chassis.moveToPose(0, 48, 0, 10000, {maxSpeed: 127});
+	drive::chassis.moveToPoint(0, 48, 10000, {maxSpeed: 127});
+    //drive::chassis.moveToPose(0, 48, 0, 10000, {maxSpeed: 127});
     //drive::chassis.moveToPose(48, 48, 0, 3000, {.lead = 0.5});
     //drive::chassis.moveToPose(0, 48, 270, 10000);
 	//still_working_big_skills_auton();
