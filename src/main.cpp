@@ -112,6 +112,8 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	drive::chassis.setPose(0, 0, 0);
+	pros::Task odom_debug(drive::odom_debug);
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 	pros::Task drive(drive::control, TASK_PRIORITY_DEFAULT + 4);
 	pros::Task intake(intake::control, TASK_PRIORITY_DEFAULT + 3);

@@ -34,10 +34,10 @@ namespace drive{
             lemlib::Pose pose = drive::chassis.getPose();
             printf("x: %f | y: %f | theta: %f\n", pose.x, pose.y, pose.theta);
             printf("theta: %f\n", imu.get_heading());
-            pros::delay(50);
+            pros::delay(200);
         }
     }
-    lemlib::ControllerSettings lateral_controller(2, // proportional gain (kP)
+    lemlib::ControllerSettings lateral_controller(6, // proportional gain (kP)
                                               0, // integral gain (kI)
                                               0, // derivative gain (kD)
                                               0, // anti windup
