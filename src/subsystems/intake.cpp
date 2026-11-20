@@ -75,7 +75,7 @@ namespace intake{
 
     void control(){ 
         inititalze_Mechs();
-        pros::Task debug_task(wrist_debug);
+        //pros::Task debug_task(wrist_debug);
         float limit = 1042000;
         while (true) {
                 // Up slow
